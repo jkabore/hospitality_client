@@ -5,7 +5,6 @@ import axios from "axios";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 
-
 const Rooms = () => {
   const [rooms, setrooms] = useState([]);
   const [loading, setloading] = useState(false);
@@ -15,7 +14,11 @@ const Rooms = () => {
     const getRooms = async () => {
       try {
         setloading(true);
-        const data = await (await axios.get("/api/rooms/getallrooms")).data;
+        const data = await (
+          await axios.get(
+            `${process.env.REACT_APP_PROD_API}/api/rooms/getallrooms`
+          )
+        ).data;
         setrooms(data);
         setloading(false);
       } catch (error) {
@@ -24,7 +27,7 @@ const Rooms = () => {
       }
     };
     getRooms();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

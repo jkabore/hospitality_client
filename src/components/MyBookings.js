@@ -22,9 +22,12 @@ const MyBookings = () => {
       try {
         setloading(true);
         const data = await (
-          await axios.post("/api/bookings/getbookingsbyuserid", {
-            userid: decoded.id,
-          })
+          await axios.post(
+            `${process.env.REACT_APP_PROD_API}/api/bookings/getbookingsbyuserid`,
+            {
+              userid: decoded.id,
+            }
+          )
         ).data;
         setmybookings(data);
         setloading(false);
@@ -34,13 +37,13 @@ const MyBookings = () => {
       }
     };
     getBookings();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function cancelBooking(bookingid, roomid) {
     try {
       setloading(true);
-       await axios.post("/api/bookings/cancelbooking", {
+      await axios.post("/api/bookings/cancelbooking", {
         bookingid: bookingid,
         userid: user._id,
         roomid: roomid,

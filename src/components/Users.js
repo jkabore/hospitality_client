@@ -7,7 +7,11 @@ const Users = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const data = await (await axios.get("/api/users/allusers")).data;
+        const data = await (
+          await axios.get(
+            `${process.env.REACT_APP_PROD_API}/api/users/allusers`
+          )
+        ).data;
         setusers(data);
         setloading(false);
       } catch (error) {
@@ -35,7 +39,7 @@ const Users = () => {
 
           <tbody>
             {users &&
-              users.map((user,index) => {
+              users.map((user, index) => {
                 return (
                   <tr key={index}>
                     <td>{user._id}</td>

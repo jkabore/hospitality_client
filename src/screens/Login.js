@@ -10,23 +10,27 @@ const Login = () => {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(false);
   const [success, setsuccess] = useState(false);
- 
+
   useEffect(() => {
     ///checking to see if local storage is empty
     if (typeof localStorage.getItem("currentUser") == "undefined") {
       window.location.href = "/login";
-    }  // eslint-disable-next-line react-hooks/exhaustive-deps
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const login = async () => {
-
     const user = {
       email,
       password,
     };
- 
+
     try {
       setloading(true);
-      const result = await (await axios.post("/api/users/login", user)).data;
+      const result = await (
+        await axios.post(
+          `${process.env.REACT_APP_PROD_API}/api/users/login`,
+          user
+        )
+      ).data;
 
       localStorage.setItem("currentUser", JSON.stringify(result));
       setloading(false);

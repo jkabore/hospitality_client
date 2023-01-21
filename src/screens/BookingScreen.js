@@ -31,7 +31,10 @@ const BookingScreen = () => {
       try {
         setloading(true);
         const data = await (
-          await axios.post("/api/rooms/getroombyid", { roomid })
+          await axios.post(
+            `${process.env.REACT_APP_PROD_API}/api/rooms/getroombyid`,
+            { roomid }
+          )
         ).data;
 
         setroom(data);
@@ -44,7 +47,7 @@ const BookingScreen = () => {
       }
     };
     getRooms();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onToken = async (token) => {
@@ -133,8 +136,8 @@ const BookingScreen = () => {
               token={onToken}
               stripeKey={process.env.REACT_APP_STRIPEKEY}
             >
-               <button className='btn btn-primary'>Pay Now</button>
-              </StripeCheckout>
+              <button className="btn btn-primary">Pay Now</button>
+            </StripeCheckout>
           </div>
         </div>
       )}

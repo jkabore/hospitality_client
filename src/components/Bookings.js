@@ -8,13 +8,15 @@ const Bookings = () => {
   const [bookings, setbookings] = useState([]);
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(false);
-  
+
   useEffect(() => {
     const getBookigs = async () => {
       try {
         setloading(true);
         const data = await (
-          await axios.get("/api/bookings/getallbookings")
+          await axios.get(
+            `${process.env.REACT_APP_PROD_API}/api/bookings/getallbookings`
+          )
         ).data;
         setbookings(data);
 
@@ -25,7 +27,7 @@ const Bookings = () => {
       }
     };
     getBookigs();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="col-md-10">

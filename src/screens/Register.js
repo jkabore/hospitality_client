@@ -16,8 +16,6 @@ const Register = () => {
   const [success, setsuccess] = useState(false);
   const [checkEmail, setcheckEmail] = useState(false);
 
- 
-
   useEffect(() => {
     setcheckEmail(EmailValidator.validate(email));
   }, [email]);
@@ -38,7 +36,10 @@ const Register = () => {
 
       try {
         setloading(true);
-         await axios.post("/api/users/register", user);
+        await axios.post(
+          `${process.env.REACT_APP_PROD_API}/api/users/register`,
+          user
+        );
         setloading(false);
         setsuccess(true);
         setemail("");

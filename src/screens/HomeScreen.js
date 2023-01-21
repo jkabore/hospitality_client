@@ -21,7 +21,11 @@ const HomeScreen = () => {
     const getRooms = async () => {
       try {
         setloading(true);
-        const room = await (await axios.get("/api/rooms/getallrooms")).data;
+        const room = await (
+          await axios.get(
+            `${process.env.REACT_APP_PROD_API}/api/rooms/getallrooms`
+          )
+        ).data;
 
         setRooms(room);
         setduplicateRooms(room);
@@ -32,7 +36,7 @@ const HomeScreen = () => {
       }
     };
     getRooms();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const filterBySearch = async () => {
     const tempRooms = duplicateRooms.filter((room) =>
