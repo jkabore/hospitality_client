@@ -1,12 +1,12 @@
 import React from "react";
 import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+
 const Navbar = () => {
-  const navigate = useNavigate();
+
   function logout() {
     localStorage.removeItem("currentUser");
-    navigate("/login");
+    window.location.href("/home")
     window.location.reload();
   }
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
@@ -65,18 +65,14 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item ">
-                  <Link to="/register">
-                    <a className="nav-link" href="#">
-                      Register
-                    </a>
-                  </Link>
+                  <a className="nav-link" href="/register">
+                    Register
+                  </a>
                 </li>
                 <li className="nav-item">
-                  <Link to="/login">
-                    <a className="nav-link" href="#">
-                      Login
-                    </a>
-                  </Link>
+                  <a className="nav-link" href="/login">
+                    Login
+                  </a>
                 </li>
               </>
             )}
