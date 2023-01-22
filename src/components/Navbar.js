@@ -1,10 +1,12 @@
 import React from "react";
 import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   function logout() {
     localStorage.removeItem("currentUser");
-    window.location.href = "/login";
+    navigate("/login");
     window.location.reload();
   }
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
