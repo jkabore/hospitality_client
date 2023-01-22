@@ -5,7 +5,12 @@ import { useNavigate } from "react-router-dom";
 const HomeCarousel = () => {
   const navigate = useNavigate();
   const GOTO = () => {
-    navigate("/login");
+   
+      if (typeof localStorage.getItem("currentUser") !== "undefined") {
+        navigate("/home");
+      } else{// eslint-disable-next-line react-hooks/exhaustive-deps
+   
+    navigate("/login");}
   };
   return (
     <Carousel fade nextLabel="" prevLabel="" indicators={false}>

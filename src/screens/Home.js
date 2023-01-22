@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import HomeCarousel from "../components/HomeCarousel";
 
 import {
@@ -14,12 +14,13 @@ import {
   MDBFooter,
   MDBIcon,
 } from "mdb-react-ui-kit";
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     ///checking to see if local storage is empty
     if (typeof localStorage.getItem("currentUser") !== "undefined") {
-      window.location.href = "/home";
+      navigate("/home");
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
