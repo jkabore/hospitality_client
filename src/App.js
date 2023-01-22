@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import BookingScreen from "./screens/BookingScreen";
 import Login from "./screens/Login";
@@ -18,7 +18,7 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<Home/>} />
+          <Route path="/" exact element={<Home />} />
           <Route
             path="/home"
             exact
@@ -37,8 +37,8 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="/register" exact element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/profile"
             exact
