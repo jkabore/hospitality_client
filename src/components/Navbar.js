@@ -1,7 +1,7 @@
 import React from "react";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   function logout() {
@@ -65,14 +65,18 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item ">
-                  <a className="nav-link" href="/register">
+                <Link to="/register">
+                  <a className="nav-link" href="#top">
                     Register
                   </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
+                <Link to="/login">
                   <a className="nav-link" href="/login">
                     Login
                   </a>
+                  </Link>
                 </li>
               </>
             )}

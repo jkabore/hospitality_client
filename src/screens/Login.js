@@ -4,19 +4,28 @@ import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from "../components/Success";
 
+
+
+import jwt_decode from "jwt-decode";
+
+
+
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(false);
   const [success, setsuccess] = useState(false);
-
+  const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
+  const decoded = token ? jwt_decode(token) : null;
   useEffect(() => {
-    ///checking to see if local storage is empty
-    if (typeof localStorage.getItem("currentUser") !== "undefined") {
-      window.location.href = "/home";
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (decoded ) {
+   
+      window.location.href("/home");
+    }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [decoded]);
+
   const login = async () => {
     const user = {
       email,

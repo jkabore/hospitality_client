@@ -14,15 +14,21 @@ import {
   MDBFooter,
   MDBIcon,
 } from "mdb-react-ui-kit";
-import { useNavigate } from "react-router-dom";
+
+import jwt_decode from "jwt-decode";
+
+
+
 const Home = () => {
-  const navigate = useNavigate();
+  const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
+  const decoded = token ? jwt_decode(token) : null;
   useEffect(() => {
-    ///checking to see if local storage is empty
-    if (typeof localStorage.getItem("currentUser") !== "undefined") {
-      navigate("/home");
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (decoded ) {
+   
+      window.location.href("/home");
+    }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [decoded]);
   return (
     <div>
       <HomeCarousel />

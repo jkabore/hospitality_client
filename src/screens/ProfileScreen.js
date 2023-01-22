@@ -10,7 +10,7 @@ const decoded = token ? jwt_decode(token) : null;
 const ProfileScreen = () => {
   useEffect(() => {
     if (decoded === null) {
-      console.log(typeof localStorage.getItem("currentUser"));
+   
       window.location.href("/login");
     }
       // eslint-disable-next-line react-hooks/exhaustive-deps

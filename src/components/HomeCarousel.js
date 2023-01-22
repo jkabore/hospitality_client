@@ -2,15 +2,20 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+
 const HomeCarousel = () => {
+  const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
+  const decoded = token ? jwt_decode(token) : null;
   const navigate = useNavigate();
   const GOTO = () => {
-   
-      if (typeof localStorage.getItem("currentUser") !== "undefined") {
-        navigate("/home");
-      } else{// eslint-disable-next-line react-hooks/exhaustive-deps
-   
-    navigate("/login");}
+    if (decoded) {
+      navigate("/home");
+    } else {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+
+      navigate("/login");
+    }
   };
   return (
     <Carousel fade nextLabel="" prevLabel="" indicators={false}>
