@@ -5,7 +5,7 @@ import Room from "../components/Room";
 import { DatePicker } from "antd";
 import moment from "moment";
 //import "antd/dist/antd.css";
-import jwt_decode from "jwt-decode";
+
 
 const { RangePicker } = DatePicker;
 const HomeScreen = () => {
@@ -105,6 +105,7 @@ const HomeScreen = () => {
               onChange={filterByDate}
               format="MM-DD-YYYY"
               className="m-2"
+              disabledDate={(current) => current.isBefore(moment().subtract(1,"day"))}
             />
           </div>
 

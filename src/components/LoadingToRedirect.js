@@ -10,7 +10,9 @@ const LoadingToRedirect = () => {
     }, 1000);
 
     count === 0 && navigate("/login");
+    window.location.reload();
     return () => clearInterval(interval);
+    
   }, [count, navigate]);
   return (
     <div style={{ marginTop: "100px" }}>

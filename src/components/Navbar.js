@@ -5,6 +5,7 @@ const Navbar = () => {
   function logout() {
     localStorage.removeItem("currentUser");
     window.location.href = "/login";
+    window.location.reload();
   }
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
   const decoded = token ? jwt_decode(token) : null;
@@ -15,7 +16,7 @@ const Navbar = () => {
           Ibiza
         </a>
         <button
-          className="navbar-toggler  "
+          className="navbar-toggler "
           type="button"
           data-toggle="collapse"
           data-target="#navbarNav"
