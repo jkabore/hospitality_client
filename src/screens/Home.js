@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import HomeCarousel from "../components/HomeCarousel";
 
 import {
@@ -16,6 +16,12 @@ import {
 } from "mdb-react-ui-kit";
 
 const Home = () => {
+  useEffect(() => {
+    ///checking to see if local storage is empty
+    if (typeof localStorage.getItem("currentUser") !== "undefined") {
+      window.location.href = "/home";
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <HomeCarousel />

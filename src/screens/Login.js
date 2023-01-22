@@ -13,8 +13,8 @@ const Login = () => {
 
   useEffect(() => {
     ///checking to see if local storage is empty
-    if (typeof localStorage.getItem("currentUser") == "undefined") {
-      window.location.href = "/login";
+    if (typeof localStorage.getItem("currentUser") !== "undefined") {
+      window.location.href = "/home";
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const login = async () => {
