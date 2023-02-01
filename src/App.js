@@ -18,10 +18,10 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" e element={<Home />} />
           <Route
             path="/home"
-            exact
+            
             element={
               <PrivateRoute>
                 <HomeScreen />
