@@ -6,8 +6,8 @@ const Navbar = () => {
 
   function logout() {
     localStorage.removeItem("currentUser");
-    window.location.assign("/home")
-    window.location.reload();
+    window.location.assign("/")
+    
   }
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
   const decoded = token ? jwt_decode(token) : null;

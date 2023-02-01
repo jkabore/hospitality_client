@@ -11,7 +11,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     if (decoded === null) {
    
-      window.location.assign("/login");
+      window.location.assign("/");
     }
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
