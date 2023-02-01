@@ -17,17 +17,14 @@ import {
 
 import jwt_decode from "jwt-decode";
 
-
-
 const Home = () => {
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
   const decoded = token ? jwt_decode(token) : null;
   useEffect(() => {
-    if (decoded ) {
-   
-      window.location.href("/home");
+    if (decoded) {
+      window.location.assign("/home");
     }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [decoded]);
   return (
     <div>

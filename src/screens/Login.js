@@ -21,7 +21,7 @@ const Login = () => {
   useEffect(() => {
     if (decoded ) {
    
-      window.location.href("/home");
+      window.location.assign("/home");
     }
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [decoded]);
@@ -43,7 +43,7 @@ const Login = () => {
 
       localStorage.setItem("currentUser", JSON.stringify(result));
       setloading(false);
-      window.location.href = "/home";
+      window.location.assign("/home");
     } catch (error) {
       seterror(true);
       setloading(false);

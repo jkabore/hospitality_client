@@ -6,7 +6,7 @@ const Navbar = () => {
 
   function logout() {
     localStorage.removeItem("currentUser");
-    window.location.href("/home")
+    window.location.assign("/home")
     window.location.reload();
   }
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
