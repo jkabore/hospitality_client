@@ -6,7 +6,6 @@ import { DatePicker } from "antd";
 import moment from "moment";
 //import "antd/dist/antd.css";
 
-
 const { RangePicker } = DatePicker;
 const HomeScreen = () => {
   const [rooms, setRooms] = useState([]);
@@ -52,7 +51,7 @@ const HomeScreen = () => {
       const tempRooms = duplicateRooms.filter((room) => {
         return room.type.toLowerCase() === e.toLowerCase();
       });
-      console.log(tempRooms);
+
       setRooms(tempRooms);
     } else {
       setRooms(duplicateRooms);
@@ -105,7 +104,9 @@ const HomeScreen = () => {
               onChange={filterByDate}
               format="MM-DD-YYYY"
               className="m-2"
-              disabledDate={(current) => current.isBefore(moment().subtract(1,"day"))}
+              disabledDate={(current) =>
+                current.isBefore(moment().subtract(1, "day"))
+              }
             />
           </div>
 

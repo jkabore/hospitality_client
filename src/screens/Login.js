@@ -4,11 +4,7 @@ import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from "../components/Success";
 
-
-
 import jwt_decode from "jwt-decode";
-
-
 
 const Login = () => {
   const [email, setemail] = useState("");
@@ -19,11 +15,10 @@ const Login = () => {
   const token = JSON.parse(localStorage.getItem("currentUser"))?.token;
   const decoded = token ? jwt_decode(token) : null;
   useEffect(() => {
-    if (decoded ) {
-   
+    if (decoded) {
       window.location.assign("/home");
     }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [decoded]);
 
   const login = async () => {
@@ -61,7 +56,7 @@ const Login = () => {
 
           {loading && <Loader />}
           {error && <Error error="Invalid Credentials" />}
-          {success && <Success success="User Login Successfull" />}
+          {success && <Success success="User Login Successful" />}
           <div>
             <input
               required
@@ -74,7 +69,7 @@ const Login = () => {
               }}
             />
             <input
-              type="text"
+              type="password"
               placeholder="password"
               className="form-control mt-1"
               value={password}

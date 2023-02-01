@@ -63,7 +63,10 @@ const BookingScreen = () => {
 
     try {
       setloading(true);
-      await axios.post("/api/bookings/bookroom", bookingDetails);
+      await axios.post(
+        `${process.env.REACT_APP_PROD_API}/api/bookings/bookroom`,
+        bookingDetails
+      );
       Swal.fire(
         "Congrats",
         "Your Room has booked succeessfully",

@@ -58,7 +58,7 @@ const Home = () => {
         >
           <section className="mt-5">
             <MDBContainer className="text-center text-md-start mt-5">
-              <h1 className="text-center mt-5">Resort Amenties</h1>
+              <h1 className="text-center mt-5">Resort Amenities</h1>
               <MDBRow className="mt-5">
                 <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4 ">
                   <p>
